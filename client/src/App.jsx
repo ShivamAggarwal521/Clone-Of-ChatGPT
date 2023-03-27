@@ -4,13 +4,36 @@ import Chat from "@/components/chat";
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 //import './App.css'
+import Login from "@/components/login";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [secret, setSecret] = useState(null);
+  const isAuth = Boolean(user) && Boolean(secret);
   return (
    <div className="app">
     <BrowserRouter>
      <Routes>
-      <Route path="/chat" element={<Chat />} />
+      <Route
+      path="/"
+      element={
+        isAuth ? (
+          <Navigate to="/chat" />
+        ) : (
+          <Login setUser={setUser} setSecret={setSecret} />
+        )
+      }
+      />
+      <Route 
+      path="/chat"
+       element={
+        isAuth ? ( 
+        <Chat user={user} secret={secret} /> 
+        ) : ( 
+        <Navigate  to="/"/>
+         )
+         } 
+         />
       </Routes>
       </BrowserRouter>
     </div>
