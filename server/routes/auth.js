@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
        
         res.status(200).json({ response: chatEngineResponse.data });
             } catch (error) {
-                console.error("error", error.message);
+                console.error("error", error);
                 res.status(500).json({ error: error.message });
 
         }

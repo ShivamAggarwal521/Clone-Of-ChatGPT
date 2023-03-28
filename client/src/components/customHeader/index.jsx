@@ -20,4 +20,4 @@ const CustomHeader = ({ chat }) => {
   );
 };
 
-export default CustomHeader
+export default CustomHeader;
